@@ -1,0 +1,23 @@
+{
+  "name": "triviagame",
+  "version": "1.0.0",
+  "description": "TriviaGame assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christopher73/TriviaGame.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christopher73/TriviaGame/issues"
+  },
+  "homepage": "https://github.com/christopher73/TriviaGame#readme",
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-config-google": "^0.12.0"
+  }
+}
