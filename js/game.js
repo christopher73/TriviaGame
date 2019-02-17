@@ -129,7 +129,7 @@ $("document").ready(function() {
     });
     $(".score").empty();
     $(".infodiv").show();
-    var newt = timer(10000); //---------set time to 10sec
+    var newt = timer(35000); //---------set time to 10sec
 
     $(".next")
       .empty()
