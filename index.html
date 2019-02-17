@@ -2,19 +2,27 @@
   <head>
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/jQuery.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <h1>Trivia Game</h1>
-    <div class="main">
-      <div class="question"></div>
-      <div class="answers"></div>
+    <div class="title">
+      <h1 class="h text-center p-3 m-0 mb-5">THE JAVASCRIPT TRIVIA GAME</h1>
     </div>
-    <button class="start">
-      Start
-    </button>
-    <button class="next">
-      Next
-    </button>
+    <div class="infodiv row w-100 m-auto my-2 p-1 text-center">
+      <div class="score col-sm-6 text-center m-auto p-1"></div>
+      <div class="info col-sm-6 text-center m-auto p-1"></div>
+    </div>
+    <div class="main col-sm-12 m-auto my-2 p-3 text-center"></div>
+    <div class="buttons row m-auto my-2 p-3">
+      <button class="next col-sm-6 m-auto my-2 p-3 ">PLAY</button>
+      <button class="newgame col-sm-6 m-auto my-2 p-3">RESTART</button>
+    </div>
+
     <script type="text/javascript" src="./js/game.js"></script>
   </body>
 </html>

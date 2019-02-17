@@ -1,3 +1,14 @@
 module.exports = {
-    "extends": "google"
+  env: {
+    browser: true,
+    es6: true
+  },
+  parserOptions: {
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+      jsx: true
+    },
+    sourceType: "module"
+  },
+  extends: ["eslint:recommended", "airbnb"]
 };

@@ -1,0 +1,38 @@
+.next {
+  background-color: rgb(53, 60, 96);
+  color: rgb(238, 252, 114);
+  font-size: 1.7em;
+}
+.h {
+  background-color: rgb(53, 60, 96);
+  color: rgb(252, 133, 69);
+  font-size: 3em;
+}
+.newgame {
+  background-color: rgb(53, 60, 96);
+  color: rgb(93, 232, 93);
+  font-size: 1.7em;
+}
+.input {
+  background-color: rgb(53, 60, 96);
+  color: rgb(93, 232, 93);
+  font-size: 1.7em;
+}
+.input:hover {
+  color: black;
+  background-color: white;
+}
+body {
+  background-image: url("../assest/background.jpg");
+  background-size: 100% 100%;
+}
+.infodiv {
+  background-color: rgb(53, 60, 96);
+  color: rgb(238, 252, 114);
+  font-size: 1.5em;
+}
+.question {
+  background-color: rgb(53, 60, 96);
+  color: rgb(233, 231, 255);
+  font-size: 1.6em;
+}

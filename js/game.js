@@ -1,8 +1,8 @@
 $("document").ready(function() {
-  const questions = [
+  var questions = [
     {
       question: `Inside which HTML element do we put the JavaScript?`,
-      correct_answer: `<script>`,
+      answer: `<script>`,
       wrong_answers: [`<js> `, `<scripting> `, `<javascript>`]
     },
     {
@@ -64,34 +64,110 @@ $("document").ready(function() {
   ];
 
   function shuffle(arr) {
-    for (let i = 0; i < arr.length; i++) {
+    //------funtion to shuffle my arrays
+    let new_questions = arr;
+    for (let i = 0; i < new_questions.length; i++) {
       const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
+      [new_questions[i], new_questions[j]] = [
+        new_questions[j],
+        new_questions[i]
+      ];
     }
-    return arr;
+    return new_questions;
   }
-
+  //--------initilize variable ---maybe cunstructors???
   let new_arr = shuffle(questions);
-  console.log(questions.length);
+  let tmp = 0;
+  let score = 0;
+  let i = 0;
+  let selected = [];
+  $(".infodiv").hide();
+  $(".newgame").hide(); //---------new game button restart !
 
-  $(".start").on("click", () => {
-    let i = 0;
-    console.log(i);
-
-    $(".next").on("click", () => {
-      if (i < questions.length) {
-        $(".question").empty();
-        $(".answers").empty();
-        console.log(i);
-        $(".question").append($("<div>").text(new_arr[i].question));
-        new_arr[i].wrong_answers.push(new_arr[i].answer);
-        new_arr[i].wrong_answers = shuffle(new_arr[i].wrong_answers);
-        for (let j = 0; j < new_arr[i].wrong_answers.length; j++) {
-          $(".answers").append($("<p>").text(new_arr[i].wrong_answers[j]));
-        }
+  var timer = countDown => {
+    //---------this funtion takes variable and creates count down
+    $(".info").empty();
+    let count = countDown;
+    let seconds = 0;
+    $(".info").text(`TIME : ${count / 1000}`);
+    let n = setInterval(function() {
+      count = count - 1000;
+      seconds = Math.floor((count % (1000 * 60)) / 1000);
+      $(".info")
+        .empty()
+        .text(`TIME : ${seconds}`);
+      if (count === 0) {
+        //---------if count down is finished simulate click next
+        clearInterval(n);
+        $(".next").click();
       }
-      //
-      i++;
+    }, 1000);
+    return n; //-------return cariable to be able to clear interbal later
+  };
+  $(".newgame").on("click", () => {
+    //$(".main").empty();
+    $(".next")
+      .empty()
+      .text("START");
+    $(".next").show();
+    $(".newgame").hide();
+    new_arr = [];
+    new_arr = shuffle(questions);
+    // console.log(questions.length);
+    tmp = 0;
+    i = 0;
+    selected = [];
+    score = 0;
+  });
+  $(".next").on("click", () => {
+    let $question = $("<div>").attr({
+      class: "question col-sm-9 text-center m-auto p-3"
     });
+    let $answers = $("<div>").attr({
+      class: "answers col-sm-9 text-center m-auto p-3",
+      id: i
+    });
+    $(".score").empty();
+    $(".infodiv").show();
+    var newt = timer(10000); //---------set time to 10sec
+
+    $(".next")
+      .empty()
+      .text("Next");
+    $(".main").empty();
+    $(".main").append($question);
+    $(".main").append($answers);
+    $(".score").append(`SCORE: ${score}`);
+
+    new_arr[i].wrong_answers.push(new_arr[i].answer);
+    new_arr[i].wrong_answers = shuffle(new_arr[i].wrong_answers);
+    $($question).text(new_arr[i].question);
+    for (let j = 0; j < new_arr[i].wrong_answers.length; j++) {
+      let $choices = $("<button>").attr({
+        class: "input col-sm-12 mx-auto my-2 p-3",
+        id: "input" + j,
+        value: j
+      });
+      $($choices).text(new_arr[i].wrong_answers[j]);
+
+      $(`#${i}`).append($choices);
+    }
+    $(`.input`).on("click", function() {
+      tmp = $(this).val();
+      clearInterval(newt);
+      selected[i - 1] = tmp;
+      //console.log(new_arr[i - 1].wrong_answers[tmp]);
+      if (new_arr[i - 1].answer === new_arr[i - 1].wrong_answers[tmp]) score++;
+      $(".next").click();
+    });
+    $(".next").hide();
+    if (i < new_arr.length - 1) i++;
+    else {
+      clearInterval(newt);
+      $($answers).hide();
+      $($question).hide();
+      $(".newgame").show();
+    }
+    console.log(score);
   });
 });
