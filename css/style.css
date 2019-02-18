@@ -17,6 +17,7 @@
   background-color: rgb(53, 60, 96);
   color: rgb(93, 232, 93);
   font-size: 1.7em;
+  border-color: rgb(93, 232, 93);
 }
 .input:hover {
   color: black;
